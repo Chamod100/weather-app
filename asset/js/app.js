@@ -190,7 +190,7 @@ function handleSearch() {
 
             showNotification(`Weather updated for ${cityData.location}`, 'success');
         } else {
-            showNotification(`Weather data not found for "${searchTerm}". Try: Colombo, Kandy, London, New York, Tokyo, etc.`, 'error');
+            showNotification(`Weather data not found for "${searchTerm}". Try: Colombo,Kandy,gampaha,kalutara,kurunegala, etc.`, 'error');
         }
 
         document.body.classList.remove('loading');
