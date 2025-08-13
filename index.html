@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>WeatherPro - Beautiful Weather App</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+</head>
+
+<body>
+    <div class="weather-app">
+        <div class="bg-overlay"></div>
+        <div class="bg-circle-1"></div>
+        <div class="bg-circle-2"></div>
+
+        <div class="container">
+            <header class="header">
+                <h1 class="title">WeatherPro</h1>
+                <p class="subtitle">Beautiful weather, beautifully displayed</p>
+
+                <div class="search-container data-aos=">
+                    <input type="text" id="location-search" placeholder="Search for a city..." class="search-input">
+                    <button id="search-btn" class="search-btn">Search</button>
+                </div>
+            </header>
+
+            <div class="main-grid">
+                <div class="current-weather-card">
+                    <div class="location-time">
+                        <div class="location-info">
+                            <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span id="location" class="location-text">Colombo, Western, Sri Lanka</span>
+                        </div>
+                        <div class="time-info">
+                            <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                            <span id="local-time" class="time-text">Monday, 2:30 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="main-weather-info">
+                        <div class="weather-main">
+                            <div class="weather-icon-container">
+                                <div id="main-weather-icon" class="weather-icon sunny">☀️</div>
+                            </div>
+                            <div class="weather-details">
+                                <div id="weather-condition" class="weather-condition">Sunny</div>
+                                <div class="temperature-display">
+                                    <span id="temperature-c" class="temp-main">28°C</span>
+                                    <span id="temperature-f" class="temp-secondary">82°F</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feels-like">
+                            <div class="feels-like-label">
+                                <svg class="feels-like-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
+                                </svg>
+                                <span>Feels like</span>
+                            </div>
+                            <span id="feels-like" class="feels-like-temp">31°C</span>
+                        </div>
+                    </div>
+
+                    <div class="weather-details-grid">
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path>
+                                    <path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path>
+                                    <path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path>
+                                </svg>
+                                <span class="detail-label">Wind</span>
+                            </div>
+                            <div id="wind-speed-kph" class="detail-value">12 KPH</div>
+                            <div id="wind-speed-mph" class="detail-sub">7.5 MPH</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span class="detail-label">Humidity</span>
+                            </div>
+                            <div id="humidity" class="detail-value">65%</div>
+                            <div class="detail-sub">Normal</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                                </svg>
+                                <span class="detail-label">Clouds</span>
+                            </div>
+                            <div id="cloud-cover" class="detail-value">20%</div>
+                            <div class="detail-sub">Partly cloudy</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M12 2v2"></path>
+                                    <path d="M12 20v2"></path>
+                                    <path d="M4.93 4.93l1.41 1.41"></path>
+                                    <path d="M17.66 17.66l1.41 1.41"></path>
+                                    <path d="M2 12h2"></path>
+                                    <path d="M20 12h2"></path>
+                                    <path d="M6.34 17.66l-1.41 1.41"></path>
+                                    <path d="M19.07 4.93l-1.41 1.41"></path>
+                                </svg>
+                                <span class="detail-label">UV Index</span>
+                            </div>
+                            <div id="uv-index" class="detail-value">7</div>
+                            <div class="detail-sub uv-high">High</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                </svg>
+                                <span class="detail-label">Pressure</span>
+                            </div>
+                            <div id="pressure" class="detail-value">1013 hPa</div>
+                            <div class="detail-sub">Normal</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span class="detail-label">Visibility</span>
+                            </div>
+                            <div id="visibility" class="detail-value">10 km</div>
+                            <div class="detail-sub">Excellent</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="3,11 22,2 13,21 11,13 3,11"></polygon>
+                                </svg>
+                                <span class="detail-label">Wind Dir</span>
+                            </div>
+                            <div id="wind-direction" class="detail-value">NW</div>
+                            <div class="detail-sub">Northwest</div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <span class="detail-label">Dew Point</span>
+                            </div>
+                            <div id="dew-point" class="detail-value">18°C</div>
+                            <div class="detail-sub">Comfortable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-details">
+                    <div class="additional-card">
+                        <h3 class="additional-title">
+                            <svg class="additional-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                            </svg>
+                            Additional Details
+                        </h3>
+
+                        <div class="additional-list">
+                            <div class="additional-item">
+                                <div class="additional-item-label">
+                                    <svg class="additional-item-icon" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
+                                    </svg>
+                                    <span>Heat Index</span>
+                                </div>
+                                <span id="heat-index" class="additional-value">32°C</span>
+                            </div>
+
+                            <div class="additional-item">
+                                <div class="additional-item-label">
+                                    <svg class="additional-item-icon" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <line x1="2" x2="22" y1="12" y2="12"></line>
+                                        <path
+                                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                        </path>
+                                    </svg>
+                                    <span>Wind Chill</span>
+                                </div>
+                                <span id="wind-chill" class="additional-value">26°C</span>
+                            </div>
+
+                            <div class="additional-item last-updated">
+                                <div class="additional-item-label">
+                                    <svg class="additional-item-icon" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <span>Last Updated</span>
+                                </div>
+                                <span id="last-updated" class="additional-value">2:25 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-section">
+                <h2 class="forecast-title">
+                    <svg class="forecast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    Hourly Forecast
+                </h2>
+                <div class="hourly-forecast" id="hourly-forecast">
+                </div>
+            </div>
+
+            <div class="forecast-section">
+                <h2 class="forecast-title">
+                    <svg class="forecast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                        <line x1="16" x2="16" y1="2" y2="6"></line>
+                        <line x1="8" x2="8" y1="2" y2="6"></line>
+                        <line x1="3" x2="21" y1="10" y2="10"></line>
+                    </svg>
+                    5-Day Forecast
+                </h2>
+                <div class="daily-forecast" id="daily-forecast">
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>Made with ❤️ for beautiful weather experiences</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="asset/js/app.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>
