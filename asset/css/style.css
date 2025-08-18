@@ -14,7 +14,7 @@ body {
 
 .weather-app {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #667eea 75%, #764ba2 100%);
+    /* background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #667eea 75%, #764ba2 100%); */
     position: relative;
 }
 
